@@ -1,0 +1,116 @@
+@import url("../../utils/css/utils.css");
+
+body {
+  padding-inline: 6.25rem;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
+nav {
+  padding-block: 3.125rem;
+  gap: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.links {
+  font-family: mono;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+}
+.links.active {
+  color: var(--reverse-accent-color);
+}
+.links.active:hover {
+  cursor: default;
+}
+.links:not(.active):hover {
+  color: gray;
+}
+
+.main-container {
+  display: flex;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7rem;
+  margin-block: 2rem;
+  padding-inline: 1.6rem;
+  width: 100%;
+}
+
+.hero-text {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  font-family: mono;
+  color: var(--reverse-accent-color);
+  font-size: 5.875rem;
+  font-weight: bold;
+  max-width: 8ch;
+  text-transform: uppercase;
+  line-height: 08rem;
+}
+
+.desc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.about_contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+.des-container {
+  margin-top: 0.75rem;
+}
+
+.hi-text {
+  font-weight: bold;
+  font-family: mono;
+  text-transform: uppercase;
+}
+.desc-text,
+.contact-text {
+  font-family: mono;
+  font-size: 1rem;
+  text-align: justify;
+  color: var(--secondary-color);
+  max-width: 42ch;
+  line-height: 1.8125rem;
+}
+.contact-text {
+  font-weight: bold;
+  display: flex;
+  gap: 1.5rem;
+}
+.em {
+  color: var(--reverse-accent-color);
+  font-weight: initial;
+  font-size: initial;
+  text-transform: initial;
+}
+
+.git-btn {
+  background: transparent;
+  text-align: center;
+  border: 0.1875rem solid var(--reverse-accent-color);
+  width: 100%;
+  border-radius: 100vw;
+  padding: 1.5rem;
+  color: var(--reverse-accent-color);
+  font-family: mono;
+  font-size: 3rem;
+}
+.git-btn:hover {
+  color: gray;
+  border-color: gray;
+}

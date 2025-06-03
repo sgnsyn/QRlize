@@ -1,0 +1,81 @@
+@import url("../../utils/css/utils.css");
+body {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  padding-inline: 6.25rem;
+  font-family: mono;
+}
+
+nav {
+  padding-block: 3.125rem;
+  gap: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.links {
+  font-family: mono;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  margin: 0;
+}
+.links.active {
+  color: var(--reverse-accent-color);
+}
+.links.active:hover {
+  cursor: default;
+}
+.links:not(.active):hover {
+  color: gray;
+}
+
+.content {
+  max-width: 95ch;
+  margin-inline: auto;
+}
+h1,
+h2,
+h3 {
+  font-family: mono;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--secondary-color);
+}
+h2,
+h3 {
+  margin-bottom: 1rem;
+}
+p {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  max-width: 65ch;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+.em {
+  font-weight: bold;
+}
+.support-link {
+  font-weight: initial;
+  font-size: initial;
+  text-transform: initial;
+}
+.support-link.active:hover {
+  cursor: pointer;
+}
+
+.container {
+  line-height: 1.6;
+  max-width: 800px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+}

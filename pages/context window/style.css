@@ -1,0 +1,144 @@
+@import url("../../utils/css/utils.css");
+
+html {
+  width: 291px;
+  height: 525px;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  padding: 25px;
+  transition: background-color 0.1s ease-in-out;
+}
+
+#qrcode {
+  width: 191px;
+  height: 191px;
+  background: var(--tertiary-color);
+  border-radius: 17px;
+  border: 2px solid var(--secondary-color);
+  display: grid;
+  place-content: center;
+}
+
+nav {
+  margin-bottom: 33px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px solid var(--secondary-color);
+}
+
+.icon-btn#theme {
+  background-color: var(--tertiary-color);
+  background-image: var(--theme-icon);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#qrcode {
+  margin-bottom: 40px;
+}
+.error-p {
+  color: var(--secondary-color);
+  font-family: mono;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 12ch;
+  margin-bottom: 1ch;
+}
+
+#link-input {
+  font-family: mono;
+  width: 100%;
+  border-radius: 12px;
+  padding: 1ch;
+  margin-bottom: 23px;
+  border: 1px solid var(--tertiary-color);
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
+#link-input.active {
+  background-color: transparent;
+}
+
+.btn-container {
+  display: flex;
+  gap: 17px;
+}
+.proper-btn {
+  color: var(--secondary-color);
+  font-family: mono;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  width: 117px;
+  height: 48px;
+  display: grid;
+
+  place-content: center;
+
+  background-color: var(--tertiary-color);
+  border-radius: 100vw;
+  border: none;
+}
+
+.proper-btn#copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.proper-btn,
+.icon-btn {
+  transition:
+    scale 0.1s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+.proper-btn:hover,
+.icon-btn:hover {
+  scale: 1.075;
+  background-color: var(--accent-color) !important;
+}
+#about-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border: none;
+  height: 32px;
+  width: 82px;
+}
+
+.spinner {
+  --wh: 15px;
+  width: var(--wh);
+  height: var(--wh);
+  border: calc(var(--wh) / 10) solid transparent;
+  border-top: calc(var(--wh) / 10) solid var(--secondary-color); /* visible arc */
+  border-radius: 75%;
+  animation: spin 1.5s linear infinite;
+  position: absolute;
+  right: 10px;
+  display: none;
+} /* keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

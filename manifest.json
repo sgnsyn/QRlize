@@ -1,0 +1,20 @@
+{
+  "name": "QRlize",
+  "version": "1.0.0",
+  "description": "Generates a QR code for the current site or any link you provide.",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "./popup/popup.html"
+  },
+
+  "background": {
+    "service_worker": "./background.js"
+  },
+  "permissions": ["storage", "tabs", "contextMenus", "clipboardWrite"],
+  "web_accessible_resources": [
+    {
+      "resources": ["./page/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

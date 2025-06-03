@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "mono";
+  src: url("../../assets/fonts/mono.ttf") format("truetype");
+}
+
+:root {
+  /* color light mode  */
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --tertiary-color: #dfe8ee;
+  --accent-color: #d5c0c5;
+  --theme-icon: url("../../assets/icons/moon.svg");
+  --close-icon: url("../../assets/icons/close-light.svg");
+  --reverse-accent-color: #52242f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* color dark  mode  */
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --tertiary-color: #0e0e0e;
+    --accent-color: #52242f;
+    --reverse-accent-color: #d5c0c5;
+    --theme-icon: url("../../assets/icons/sun.svg");
+    --close-icon: url("../../assets/icons/close-dark.svg");
+  }
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* button:hover {
+  cursor: pointer;
+}
