@@ -1,6 +1,8 @@
 import { setTheme } from "../utils/js/theme.js";
 import { copyToClipboard } from "../utils/js/clipboard.js";
 import { getTabLink } from "../utils/js/tabLink.js";
+import { getFromStorage, saveToStorage } from "../utils/js/storage.js";
+import { notifyThemeChange } from "../utils/js/message.js";
 
 const linkInp = document.getElementById("link-input");
 const qrEl = document.getElementById("qrcode");
@@ -20,6 +22,11 @@ console.log(qrBg);
 let qrcode = null;
 
 async function init() {
+  const savedTheme = await getFromStorage(["theme"]);
+  theme = savedTheme.theme;
+  qrBg = theme === "light" ? "#000000" : "#ffffff";
+  setTheme(theme);
+
   link = await getTabLink();
   if (link) {
     qrcode = generateNewQr(link);
@@ -72,6 +79,8 @@ function themeHandler() {
   qrBg = theme === "light" ? "#000000" : "#e1e1e1";
 
   setTheme(theme);
+  saveToStorage({ theme });
+  notifyThemeChange(theme);
 
   qrcode.clear();
   qrcode._htOption.colorDark = qrBg;

@@ -39,7 +39,7 @@ nav {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  border: 1px solid var(--secondary-color);
+  border: 2px solid var(--secondary-color);
 }
 
 .icon-btn#theme {
@@ -123,22 +123,4 @@ nav {
   border: none;
   height: 32px;
   width: 82px;
-}
-
-.spinner {
-  --wh: 15px;
-  width: var(--wh);
-  height: var(--wh);
-  border: calc(var(--wh) / 10) solid transparent;
-  border-top: calc(var(--wh) / 10) solid var(--secondary-color); /* visible arc */
-  border-radius: 75%;
-  animation: spin 1.5s linear infinite;
-  position: absolute;
-  right: 10px;
-  display: none;
-} /* keyframes */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }

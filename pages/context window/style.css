@@ -3,6 +3,7 @@
 html {
   width: 291px;
   height: 525px;
+  overflow: hidden;
 }
 
 body {
@@ -32,21 +33,24 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .icon-btn {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  border: 1px solid var(--secondary-color);
-}
-
-.icon-btn#theme {
+  border: 2px solid var(--secondary-color);
   background-color: var(--tertiary-color);
-  background-image: var(--theme-icon);
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.icon-btn#close {
+  background-image: var(--close-icon);
+}
+.icon-btn#theme {
+  background-image: var(--theme-icon);
 }
 
 #qrcode {
@@ -123,22 +127,4 @@ nav {
   border: none;
   height: 32px;
   width: 82px;
-}
-
-.spinner {
-  --wh: 15px;
-  width: var(--wh);
-  height: var(--wh);
-  border: calc(var(--wh) / 10) solid transparent;
-  border-top: calc(var(--wh) / 10) solid var(--secondary-color); /* visible arc */
-  border-radius: 75%;
-  animation: spin 1.5s linear infinite;
-  position: absolute;
-  right: 10px;
-  display: none;
-} /* keyframes */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }

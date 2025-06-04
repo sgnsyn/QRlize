@@ -1,27 +1,40 @@
 import { setTheme } from "../../utils/js/theme.js";
 import { copyToClipboard } from "../../utils/js/clipboard.js";
-import { getTabLink } from "../../utils/js/tabLink.js";
+import { getFromStorage, saveToStorage } from "../../utils/js/storage.js";
+import { notifyThemeChange } from "../../utils/js/message.js";
 
 const linkInp = document.getElementById("link-input");
 const qrEl = document.getElementById("qrcode");
 const themeBtn = document.getElementById("theme");
+const closeBtn = document.getElementById("close");
 const copyBtn = document.getElementById("copy-btn");
 const editBtn = document.getElementById("edit-btn");
 const aboutBtn = document.getElementById("about-btn");
+const pColor = getComputedStyle(document.documentElement)
+  .getPropertyValue("--secondary-color")
+  .trim();
 
 let link = null;
 let theme = "light";
-let qrBg = "";
+let qrBg = pColor || "#000000";
+console.log(qrBg);
+
 let qrcode = null;
 
 async function init() {
-  link = await getTabLink();
+  const savedTheme = await getFromStorage(["theme"]);
+  theme = savedTheme.theme;
+  qrBg = theme === "light" ? "#000000" : "#ffffff";
+  setTheme(theme);
+
+  link = getQueryParam("link");
+  console.log(link);
   if (link) {
     qrcode = generateNewQr(link);
     linkInp.value = link;
   } else {
     qrEl.innerHTML = `
-        <p class ="error-p">Unable to generate QR for this tab</p>
+        <p class ="error-p">Unable to generate QR for this link</p>
         <p class ="error-p">Use the input field below</p>
         `;
     editBtn.click();
@@ -34,7 +47,7 @@ function generateNewQr(link) {
     text: link,
     width: 163,
     height: 163,
-    colorDark: "#000000",
+    colorDark: qrBg,
     colorLight: "transparent",
     correctLevel: QRCode.CorrectLevel.H,
   });
@@ -54,6 +67,8 @@ function editQR() {
 
 window.addEventListener("load", init);
 themeBtn.addEventListener("click", themeHandler);
+closeBtn.addEventListener("click", closeHandler);
+
 copyBtn.addEventListener("click", copyHandler);
 editBtn.addEventListener("click", editHandler);
 linkInp.addEventListener("keydown", inputHandler);
@@ -67,10 +82,16 @@ function themeHandler() {
   qrBg = theme === "light" ? "#000000" : "#e1e1e1";
 
   setTheme(theme);
+  saveToStorage({ theme });
+  notifyThemeChange(theme);
 
   qrcode.clear();
   qrcode._htOption.colorDark = qrBg;
   qrcode.makeCode(link);
+}
+
+function closeHandler() {
+  window.close();
 }
 
 async function copyHandler() {
@@ -135,6 +156,5 @@ function getQueryParam(name) {
   const params = new URLSearchParams(window.location.search);
   return params.get(name);
 }
-console.log(getQueryParam("link"));
 
 // <<< Handler Functions <<<

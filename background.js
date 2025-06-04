@@ -1,7 +1,10 @@
 chrome.runtime.onInstalled.addListener((details) => {
   //set initial Theme
-  const theme = "light";
-  setTheme(theme);
+  const initialState = {
+    theme: "light",
+    initState: true,
+  };
+  setStorage(initialState);
   // open about page aboutn load
   if (details.reason === "install") {
     chrome.tabs.create({
@@ -33,6 +36,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-function setTheme(theme) {
-  chrome.storage.local.set({ theme });
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === "themeChange") {
+    //to prevent error :recieving end don't exist
+  }
+});
+
+function setStorage(obj) {
+  chrome.storage.local.set(obj);
 }

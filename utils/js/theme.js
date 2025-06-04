@@ -6,7 +6,7 @@ const themes = {
     "--accent-color": "#d5c0c5",
     "--reverse-accent-color": "#52242f",
     "--theme-icon": 'url("../../assets/icons/moon.svg")',
-    "--close-icon": 'url("../../assets/icons/close-light.svg")',
+    "--close-icon": 'url("../../assets/icons/close-dark.svg")',
   },
   dark: {
     "--primary-color": "#000000",
@@ -15,7 +15,7 @@ const themes = {
     "--accent-color": "#52242f",
     "--reverse-accent-color": "#d5c0c5",
     "--theme-icon": 'url("../../assets/icons/sun.svg")',
-    "--close-icon": 'url("../../assets/icons/close-dark.svg")',
+    "--close-icon": 'url("../../assets/icons/close-light.svg")',
   },
 };
 
