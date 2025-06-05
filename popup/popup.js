@@ -15,6 +15,7 @@ const pColor = getComputedStyle(document.documentElement)
   .trim();
 
 let link = null;
+let copyTimeout = null;
 let theme = "light";
 let qrBg = pColor || "#000000";
 
@@ -87,9 +88,14 @@ function themeHandler() {
 }
 
 async function copyHandler() {
+  if (copyTimeout) {
+    clearTimeout(copyTimeout);
+  }
+
   if (editBtn.dataset.state === "generate") {
     editBtn.click();
   }
+
   copyBtn.textContent = "copying...";
   copyBtn.setAttribute("disabled", "disabled");
   const text = linkInp.value;
@@ -101,7 +107,7 @@ async function copyHandler() {
       copyBtn.textContent = "failed";
     }
     copyBtn.removeAttribute("disabled");
-    setTimeout(() => {
+    copyTimeout = setTimeout(() => {
       copyBtn.textContent = "copy";
     }, 2000);
   }, 1000);

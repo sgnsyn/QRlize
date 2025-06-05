@@ -15,6 +15,7 @@ const pColor = getComputedStyle(document.documentElement)
   .trim();
 
 let link = null;
+let copyTimeout = null;
 let theme = "light";
 let qrBg = pColor || "#000000";
 
@@ -32,7 +33,7 @@ async function init() {
     linkInp.value = link;
   } else {
     qrEl.innerHTML = `
-        <p class ="error-p">Unable to generate QR for this link</p>
+        <p class ="error-p">Unable to generate QR for the link</p>
         <p class ="error-p">Use the input field below</p>
         `;
     editBtn.click();
@@ -93,6 +94,10 @@ function closeHandler() {
 }
 
 async function copyHandler() {
+  if (copyTimeout) {
+    clearTimeout(copyTimeout);
+  }
+
   if (editBtn.dataset.state === "generate") {
     editBtn.click();
   }
@@ -107,7 +112,7 @@ async function copyHandler() {
       copyBtn.textContent = "failed";
     }
     copyBtn.removeAttribute("disabled");
-    setTimeout(() => {
+    copyTimeout = setTimeout(() => {
       copyBtn.textContent = "copy";
     }, 2000);
   }, 1000);
