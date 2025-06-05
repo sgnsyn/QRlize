@@ -17,7 +17,6 @@ const pColor = getComputedStyle(document.documentElement)
 let link = null;
 let theme = "light";
 let qrBg = pColor || "#000000";
-console.log(qrBg);
 
 let qrcode = null;
 

@@ -17,7 +17,6 @@ const pColor = getComputedStyle(document.documentElement)
 let link = null;
 let theme = "light";
 let qrBg = pColor || "#000000";
-console.log(qrBg);
 
 let qrcode = null;
 
@@ -28,7 +27,6 @@ async function init() {
   setTheme(theme);
 
   link = getQueryParam("link");
-  console.log(link);
   if (link) {
     qrcode = generateNewQr(link);
     linkInp.value = link;

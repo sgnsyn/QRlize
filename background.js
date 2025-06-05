@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   }
   // context menu stuff
   chrome.contextMenus.create({
-    id: "linkAction",
+    id: "show-popup",
     title: "Generate QR",
     contexts: ["link"],
   });
@@ -24,7 +24,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   const link = info.linkUrl;
   const encodedLink = encodeURIComponent(link);
 
-  if (info.menuItemId === "linkAction") {
+  if (info.menuItemId === "show-popup") {
     chrome.windows.create({
       url: chrome.runtime.getURL(
         `./pages/context window/index.html?link=${encodedLink}`,
