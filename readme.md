@@ -25,3 +25,5 @@ A simple Chrome extension to quickly generate QR codes for web pages and links.
    - Select "Generate QR Code" from the context menu.
 
    - A popup or a new small window will display the QR code for that link.
+## Download
+Chrome webstore link: [QRlize](https://chrome.google.com/webstore/detail/gobadmjcbgogdgdcdjmhoenefdbpalcl) 
